@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  localstack:
+    image: localstack/localstack
+    environment:
+      SERVICES: "dynamodb,kafka"
+      HOSTNAME_EXTERNAL: "localhost"
+      AWS_DEFAULT_REGION: "sa-east-1"
+    ports:
+      - "4566:4566"
+      - "9092:9092"
