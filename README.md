@@ -20,6 +20,9 @@ Para isso vc deve ter o docker instalado na sua máquina, acessar a pasta raiz d
 ## Criando a tabela localmente
 
 Antes de rodar a aplicação, é necessário que criemos a tabela no LocalStack. Para isso rode o comando abaixo no terminal:
+
+**OBS: caso esteja no windows, recomendo copiar do jeito que está e colar no Git Bash para evitar problemas de copy/paste.
+
 ```shell script
 aws dynamodb --endpoint-url=http://localhost:4566 create-table \
 --table-name riscos-analiticos-interno \
