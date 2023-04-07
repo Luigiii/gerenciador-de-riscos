@@ -19,10 +19,6 @@ public class RiscosAnaliticosController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String cadastraRisco(RiscoAnalitico riscoAnalitico){
-        System.out.println("Cadastrando risco" +riscoAnalitico.getId()+ " no banco de dados...");
-        System.out.println("Cadastrando risco" +riscoAnalitico.getData()+ " no banco de dados...");
-        System.out.println("Cadastrando risco" +riscoAnalitico.getValor()+ " no banco de dados...");
-        System.err.println("chamando service");
         riscoAnaliticoSyncService.add(riscoAnalitico);
         return riscoAnalitico.toString();
     }

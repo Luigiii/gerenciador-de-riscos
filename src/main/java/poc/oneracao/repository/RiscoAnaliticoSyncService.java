@@ -27,10 +27,7 @@ public class RiscoAnaliticoSyncService extends AbstractService {
     }
 
     public List<RiscoAnalitico> add(RiscoAnalitico riscoAnalitico) {
-        System.err.println("antes do put");
-        System.err.println(riscoAnaliticoTable.tableName());
         riscoAnaliticoTable.putItem(riscoAnalitico);
-        System.err.println("depois do put");
         return findAll();
     }
 
