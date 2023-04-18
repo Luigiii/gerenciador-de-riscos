@@ -1,6 +1,8 @@
 package poc.oneracao.controller;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import poc.oneracao.config.JacksonConfig;
 import poc.oneracao.repository.RiscoAnaliticoSyncService;
 import poc.oneracao.model.RiscoAnalitico;
 
@@ -14,24 +16,26 @@ public class RiscosAnaliticosController {
     @Inject
     RiscoAnaliticoSyncService riscoAnaliticoSyncService;
 
-    Gson gson = new Gson();
+    ObjectMapper mapper = new ObjectMapper();
+    JacksonConfig jacksonConfig = new JacksonConfig();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public String cadastraRisco(RiscoAnalitico riscoAnalitico){
+    public String cadastraRisco(RiscoAnalitico riscoAnalitico) throws JsonProcessingException {
         riscoAnaliticoSyncService.add(riscoAnalitico);
-        return new Gson().toJson(riscoAnalitico);
+        jacksonConfig.customize(mapper);
+        return mapper.writeValueAsString(riscoAnalitico);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{idRisco}")
-    public String buscaRisco(@PathParam("idRisco") String idRisco) {
+    public String buscaRisco(@PathParam("idRisco") String idRisco) throws JsonProcessingException {
         System.out.println(">>> buscaRisco" +idRisco);
         RiscoAnalitico risco = riscoAnaliticoSyncService.get(idRisco);
         System.out.println("<<< buscaRisco" +risco);
-        System.out.println("<<< buscaRisco JSON saida" +gson.toJson(risco));
-        return gson.toJson(risco);
+        System.out.println("<<< buscaRisco JSON saida" +mapper.writeValueAsString(risco));
+        return mapper.writeValueAsString(risco);
     }
 
 //    @GET

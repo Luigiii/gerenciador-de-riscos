@@ -1,5 +1,6 @@
 package poc.oneracao.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
@@ -21,6 +22,7 @@ public class RiscoAnalitico {
         this.id = id;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public LocalDate getData() {
         return data;
     }
