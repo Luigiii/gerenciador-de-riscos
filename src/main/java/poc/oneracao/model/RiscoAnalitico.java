@@ -2,7 +2,6 @@ package poc.oneracao.model;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
 import java.time.LocalDate;
 
@@ -22,7 +21,6 @@ public class RiscoAnalitico {
         this.id = id;
     }
 
-    @DynamoDbSortKey
     public LocalDate getData() {
         return data;
     }
