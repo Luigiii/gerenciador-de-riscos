@@ -1,10 +1,9 @@
 package poc.oneracao.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import poc.oneracao.config.JacksonConfig;
-import poc.oneracao.repository.RiscoAnaliticoSyncService;
 import poc.oneracao.model.RiscoAnalitico;
+import poc.oneracao.repository.RiscoAnaliticoSyncService;
+import poc.oneracao.utils.JsonUtils;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -16,26 +15,23 @@ public class RiscosAnaliticosController {
     @Inject
     RiscoAnaliticoSyncService riscoAnaliticoSyncService;
 
-    ObjectMapper mapper = new ObjectMapper();
-    JacksonConfig jacksonConfig = new JacksonConfig();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String cadastraRisco(RiscoAnalitico riscoAnalitico) throws JsonProcessingException {
         riscoAnaliticoSyncService.add(riscoAnalitico);
-        jacksonConfig.customize(mapper);
-        return mapper.writeValueAsString(riscoAnalitico);
+        return JsonUtils.objectToJson(riscoAnalitico);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{idRisco}")
     public String buscaRisco(@PathParam("idRisco") String idRisco) throws JsonProcessingException {
-        System.out.println(">>> buscaRisco" +idRisco);
+        System.out.println(">>> buscaRisco" + idRisco);
         RiscoAnalitico risco = riscoAnaliticoSyncService.get(idRisco);
-        System.out.println("<<< buscaRisco" +risco);
-        System.out.println("<<< buscaRisco JSON saida" +mapper.writeValueAsString(risco));
-        return mapper.writeValueAsString(risco);
+        System.out.println("<<< buscaRisco" + risco);
+        System.out.println("<<< buscaRisco JSON saida" + JsonUtils.objectToJson(risco));
+        return JsonUtils.objectToJson(risco);
     }
 
 //    @GET
