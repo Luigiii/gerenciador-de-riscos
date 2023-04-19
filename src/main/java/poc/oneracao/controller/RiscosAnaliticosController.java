@@ -8,6 +8,7 @@ import poc.oneracao.utils.JsonUtils;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/v1/riscos")
 public class RiscosAnaliticosController {
@@ -27,18 +28,15 @@ public class RiscosAnaliticosController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{idRisco}")
     public String buscaRisco(@PathParam("idRisco") String idRisco) throws JsonProcessingException {
-        System.out.println(">>> buscaRisco" + idRisco);
         RiscoAnalitico risco = riscoAnaliticoSyncService.get(idRisco);
-        System.out.println("<<< buscaRisco" + risco);
-        System.out.println("<<< buscaRisco JSON saida" + JsonUtils.objectToJson(risco));
         return JsonUtils.objectToJson(risco);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String buscaTodosOsRiscos() {
-//        System.out.println(">>> buscaTodosOsRiscos");
-//        List<RiscoAnalitico> riscos = riscoAnaliticoSyncService.findAll();
-//        return gson.toJson(riscos);
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String buscaTodosOsRiscos() throws JsonProcessingException {
+        System.out.println(">>> buscaTodosOsRiscos");
+        List<RiscoAnalitico> riscos = riscoAnaliticoSyncService.findAll();
+        return JsonUtils.objectToJson(riscos);
+    }
 }
