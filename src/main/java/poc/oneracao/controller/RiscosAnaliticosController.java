@@ -40,7 +40,6 @@ public class RiscosAnaliticosController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String buscaTodosOsRiscos() throws JsonProcessingException {
-        System.out.println(">>> buscaTodosOsRiscos");
         List<RiscoAnalitico> riscos = riscoAnaliticoSyncService.findAll();
         return JsonUtils.objectToJson(riscos);
     }

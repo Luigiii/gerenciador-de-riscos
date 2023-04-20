@@ -32,7 +32,6 @@ public class RiscoAnaliticoSyncService extends AbstractService {
     }
 
     public RiscoAnalitico get(String id) {
-        System.out.println(">>> get Risco id:" +id);
         Key partitionKey = Key.builder().partitionValue(id).build();
         return riscoAnaliticoTable.getItem(partitionKey);
     }
