@@ -1,6 +1,8 @@
 package poc.oneracao.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 import poc.oneracao.model.RiscoAnalitico;
 import poc.oneracao.repository.RiscoAnaliticoSyncService;
 import poc.oneracao.utils.JsonUtils;
@@ -16,11 +18,14 @@ public class RiscosAnaliticosController {
     @Inject
     RiscoAnaliticoSyncService riscoAnaliticoSyncService;
 
+    @Inject
+    @Channel("riscos-contratados-out")
+    Emitter<RiscoAnalitico> emitter;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String cadastraRisco(RiscoAnalitico riscoAnalitico) throws JsonProcessingException {
-        riscoAnaliticoSyncService.add(riscoAnalitico);
+        emitter.send(riscoAnalitico);
         return JsonUtils.objectToJson(riscoAnalitico);
     }
 
