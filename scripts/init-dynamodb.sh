@@ -1,3 +1,5 @@
+echo \>\>\> Criando tabela riscos-analiticos-interno
+
 aws dynamodb --endpoint-url=http://localhost:4566 create-table \
 --table-name riscos-analiticos-interno \
 --attribute-definitions \
