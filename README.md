@@ -2,7 +2,7 @@
 
 Esse Microsserviço tem como objetivo ser uma POC (prova de conceito) para elucidar ideias de quais tecnologias e serviços que poderão ser utilizados para gerenciar os riscos como parte dos processos dentro de Oneração.
 
-A ideia principal é construir uma api, que consuma mensagem de um tópico de evento e grave em um banco de dados , considerando ter log de rastreabilidade da aplicação, testes unitários e tratamento de erro.
+A ideia principal é construir uma api, que consuma mensagens de um tópico de evento e grave em um banco de dados , considerando ter log de rastreabilidade da aplicação, testes unitários e tratamento de erro.
 
 Para o tópico onde será lido as mensagens pensei em utilizar o kafka por ser altamente gerenciável e escalável.
 
