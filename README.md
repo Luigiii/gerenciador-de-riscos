@@ -87,7 +87,7 @@ Através dessa implementação é possível validar de maneira clara se ocorreu 
 ![log_erro](images/log_error.png)
 PS: Erro foi gerado propositalmente para fins de simulação!
 
-ou se o risco foi cadastrado com sucesso.
+Ou se o risco foi cadastrado com sucesso.
 
 ![log_cadastrando_com_sucesso](images/log_cadastrando_com_sucesso.png)
 
