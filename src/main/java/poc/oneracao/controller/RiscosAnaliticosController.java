@@ -16,7 +16,6 @@ import java.util.List;
 @Path("/v1/riscos")
 public class RiscosAnaliticosController {
 
-    private Logger LOGGER = Logger.getLogger(RiscosAnaliticosController.class);
     @Inject
     RiscoAnaliticoSyncService riscoAnaliticoSyncService;
 
@@ -24,17 +23,20 @@ public class RiscosAnaliticosController {
     @Channel("riscos-contratados-out")
     Emitter<RiscoAnalitico> emitter;
 
+    private final Logger LOGGER = Logger.getLogger(RiscosAnaliticosController.class);
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String cadastraRisco(RiscoAnalitico riscoAnalitico) throws JsonProcessingException {
-        LOGGER.info("Cadastrando risco com id: "+riscoAnalitico.getId());
-        try{
+        LOGGER.info("Cadastrando risco com id: " + riscoAnalitico.getId());
+        try {
+            boolean b = 10 / 0 == 1;
             emitter.send(riscoAnalitico);
-        } catch (Exception e){
-            LOGGER.error("Erro ao enviar risco para o tópico!", e);
+        } catch (Exception e) {
+            LOGGER.error("Erro ao enviar risco" + riscoAnalitico.getId() + " para o tópico!", e);
             throw e;
         }
-        LOGGER.info("Risco cadastrado com sucesso!");
+        LOGGER.info("Risco " + riscoAnalitico.getId() + " cadastrado com sucesso!");
         return JsonUtils.objectToJson(riscoAnalitico);
     }
 
@@ -42,9 +44,9 @@ public class RiscosAnaliticosController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{idRisco}")
     public String buscaRisco(@PathParam("idRisco") String idRisco) throws JsonProcessingException {
-        LOGGER.info("Buscando risco com id: "+idRisco);
+        LOGGER.info("Buscando risco com id: " + idRisco);
         RiscoAnalitico risco = riscoAnaliticoSyncService.get(idRisco);
-        LOGGER.info("Risco encontrado com sucesso: "+risco.getId());
+        LOGGER.info("Risco encontrado com sucesso: " + risco.getId());
         return JsonUtils.objectToJson(risco);
     }
 

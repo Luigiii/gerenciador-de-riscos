@@ -72,6 +72,30 @@ endpoint para ler registro a partir do id do Risco:
 
 ![lerRegistroPeloIdRisco](images/lerRegistroPeloIdRisco.png)
 
+## Logging
+
+Para monitorarmos o que acontece dentro do nosso Microsserviço, é fundamental que seja implementado ferramentas de Logging.
+
+O Logging ajuda a fornecer dados que permitem a identificação de falhas e ajuda até mesmo na hora de obtermos a confirmação de que tudo foi executado conforme o esperado.
+
+A camada de abstração de logging utilizada foi o JBoss Logging. A seguir é possível ver um exemplo de como foi implementado um tratamento de exceção junto ao log:
+
+![log](images/log.png)
+
+Através dessa implementação é possível validar de maneira clara se ocorreu um erro ao enviar o risco para o tópico: 
+
+![log_erro](images/log_error.png)
+PS: Erro foi gerado propositalmente para fins de simulação!
+
+ou se o risco foi cadastrado com sucesso.
+
+![log_cadastrando_com_sucesso](images/log_cadastrando_com_sucesso.png)
+
+## Tracing Distribuído
+
+Uma parte fundamental para obtermos a rastreabilidade das chamadas feitas para o nosso sistema é o tracing Distribuído.
+Através da implantação dele é possível gerar "rastros" entre os serviços e conectá-los para entender por uma chamada "passou", trazendo assim uma maior observabilidade para o nosso sistema como um todo, independentemente de quantos ou quais serviços ele tenha.  
+
 ## Packaging and running the application
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
