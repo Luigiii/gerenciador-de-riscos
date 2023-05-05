@@ -80,7 +80,7 @@ O Logging ajuda a fornecer dados que permitem a identificação de falhas e ajud
 
 A camada de abstração de logging utilizada foi o JBoss Logging. A seguir é possível ver um exemplo de como foi implementado um tratamento de exceção junto ao log:
 
-![log](images/log_v2.png)
+![log](images/log_v3.png)
 
 Através dessa implementação é possível validar de maneira clara se ocorreu um erro ao enviar o risco para o tópico: 
 

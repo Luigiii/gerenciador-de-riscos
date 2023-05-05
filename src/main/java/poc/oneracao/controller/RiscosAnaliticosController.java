@@ -30,7 +30,6 @@ public class RiscosAnaliticosController {
     public String cadastraRisco(RiscoAnalitico riscoAnalitico) throws JsonProcessingException {
         LOGGER.info("Cadastrando risco com id: " + riscoAnalitico.getId());
         try {
-            boolean b = 10 / 0 == 1;
             emitter.send(riscoAnalitico);
         } catch (Exception e) {
             LOGGER.error("Erro ao enviar risco" + riscoAnalitico.getId() + " para o tópico!", e);
