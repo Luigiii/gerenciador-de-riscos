@@ -93,7 +93,7 @@ Ou se o risco foi cadastrado com sucesso.
 
 ## Tracing Distribuído
 
-Uma parte fundamental para obtermos a rastreabilidade das chamadas feitas para o nosso sistema é o tracing Distribuído.
+Uma parte fundamental para obtermos a rastreabilidade das chamadas feitas para o nosso sistema é o tracing distribuído.
 Através da implantação dele é possível gerar "rastros" entre os serviços e conectá-los para entender por uma chamada 
 "passou", trazendo assim uma maior observabilidade para o nosso sistema como um todo, independentemente de quantos ou quais serviços ele tenha.
 
