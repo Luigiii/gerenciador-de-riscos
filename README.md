@@ -85,11 +85,11 @@ A camada de abstração de logging utilizada foi o JBoss Logging. A seguir é po
 Através dessa implementação é possível validar de maneira clara se ocorreu um erro ao enviar o risco para o tópico: 
 
 ![log_erro](images/log_error.png)
-PS: Erro foi gerado propositalmente para fins de simulação!
+(OBS: Erro foi gerado propositalmente para fins de simulação!)
 
 Ou se o risco foi cadastrado com sucesso.
 
-![log_cadastrando_com_sucesso](images/log_cadastrando_com_sucesso.png)
+![log_cadastrando_com_sucesso](images/log_cadastro_sucesso.png)
 
 ## Tracing Distribuído
 
