@@ -94,7 +94,26 @@ Ou se o risco foi cadastrado com sucesso.
 ## Tracing Distribuído
 
 Uma parte fundamental para obtermos a rastreabilidade das chamadas feitas para o nosso sistema é o tracing Distribuído.
-Através da implantação dele é possível gerar "rastros" entre os serviços e conectá-los para entender por uma chamada "passou", trazendo assim uma maior observabilidade para o nosso sistema como um todo, independentemente de quantos ou quais serviços ele tenha.  
+Através da implantação dele é possível gerar "rastros" entre os serviços e conectá-los para entender por uma chamada 
+"passou", trazendo assim uma maior observabilidade para o nosso sistema como um todo, independentemente de quantos ou quais serviços ele tenha.
+
+Em nosso projeto, realizamos a implementação do tracing distribuído através da dependência "quarkus-opentelemetry", da imagem do Jaeger configurada no arquivo docker-compose.yml e
+configurações feitas no application.properties do projeto.
+
+Após feito os ajustes e algumas chamadas, já é possível ver os resultados através da página inicial acessando a URL: http://localhost:16686/search
+![jaeger_search](images/Jaeger_UI.png)
+Nessa tela é possível ter ua visão geral de todos os traces capturados dentro do nosso sistema, além de poder realizar filtros e clicar em algum deles para obter mais detalhes.
+
+Caso a gente selecione abra algum trace é possível visualizar vários detalhes dentro de uma única chamada como mostra a imagem abaixo:
+![jaeger_spams](images/Jaeger_3_spams.png)
+Ao observarmos essa tela, é possível visualizar quais são os serviços chamados dentro daquela chamada, quanto tempo foi gasto em cada serviço, além de diversos outros detalhes.                                                                                                                                            
+                                              
+Além disso, é possível comparar também dois tracings distribuídos ao clicar na aba Compare:
+
+![jager_compare](images/Jaegger_compare.png)
+
+Nesse caso foram comparadas duas chamadas para o mesmo endpoint, uma logo após o startup da nossa aplicação e outra após o 
+"warmup" (fase da aplicação após o "aquecimento" dela onde ocorrem várias otimizações), onde é possível ver uma enorme diferença no tempo de execução de cada uma delas.
 
 ## Packaging and running the application
 
